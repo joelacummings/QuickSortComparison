@@ -52,11 +52,26 @@ int partition(int items[], int lo, int high) {
 int main() {
     
     int myInts[] = {5,7,1, -1, 45, 817, 19};
+	int *nums = (int*)malloc(sizeof(int)*100);
+	char buff[15];
+	int numCounter = 0, curArrSize = 100;
+	while(fgets(buff, 15, stdin)) {
+		if (numCounter >= curArrSize) {
+			nums = (int *) realloc(nums, (curArrSize + 10)*sizeof(int));
+			curArrSize += 10;
+		}
+		nums[numCounter] = atoi(buff); 
+		numCounter++;
+		// Clear out the damn buffer!
+		for (int i = 0; i < 15; i++) {
+			buff[i] = ' ';
+		}
+		
+	}
+    QuickSort(nums, 0, numCounter-1);
 
-    QuickSort(myInts, 0, (int)(sizeof(myInts)/ sizeof(int))-1);
-
-    for (int i = 0; i < (int)(sizeof(myInts) / sizeof(int)); i++) {
-        printf("%d, ", myInts[i]);
+    for (int i = 0; i < numCounter; i++) {
+        printf("%d, ", nums[i]);
     }
     
     return 0;
