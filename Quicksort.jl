@@ -15,7 +15,6 @@ function partition(items, lo, high)
     j = high + 1
 
     while true
-
         while true
             i += 1
             if (items[i] >= pivot)
@@ -48,9 +47,7 @@ function main()
       push!(stdin_input, parse(Int64, line))
   end
 
-  println("Entering QuickSort")
   QuickSort(stdin_input, 1, length(stdin_input))
-  println("QuickSort Complete")
   print(stdin_input)
 end
 

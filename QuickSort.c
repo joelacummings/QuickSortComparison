@@ -9,6 +9,11 @@ The algorithim is very simple and this implementation will serve as my benchmark
 #include<stdlib.h>
 
 int partition(int items[], int lo, int high);
+
+/**
+ The recursive quicksort function. 
+ This function calls partition and sorts the returned sub arrays
+ */
 void QuickSort(int items[], int lo, int high);
 
 void QuickSort(int items[], int lo, int high) {
@@ -51,14 +56,15 @@ int partition(int items[], int lo, int high) {
 
 int main() {
     
-    int myInts[] = {5,7,1, -1, 45, 817, 19};
 	int *nums = (int*)malloc(sizeof(int)*100);
 	char buff[15];
 	int numCounter = 0, curArrSize = 100;
+    
+    // Read input from stdin
 	while(fgets(buff, 15, stdin)) {
 		if (numCounter >= curArrSize) {
-			nums = (int *) realloc(nums, (curArrSize + 10)*sizeof(int));
-			curArrSize += 10;
+			nums = (int *) realloc(nums, ((curArrSize * 3)/2 + 1)*sizeof(int));
+			curArrSize = (curArrSize * 3)/2 + 1;
 		}
 		nums[numCounter] = atoi(buff); 
 		numCounter++;
@@ -68,11 +74,15 @@ int main() {
 		}
 		
 	}
+    // Sort the numbers
     QuickSort(nums, 0, numCounter-1);
 
+    // output the sorted numbers
     for (int i = 0; i < numCounter; i++) {
         printf("%d, ", nums[i]);
     }
     
+    // of course memory must be freed in C.
+    free(nums);
     return 0;
 }

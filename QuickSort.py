@@ -1,4 +1,3 @@
-
 import fileinput
 from array import array
 
