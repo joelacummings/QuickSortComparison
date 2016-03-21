@@ -17,3 +17,8 @@ Ada - gnat make quicksortproc.adb
 Python - python3 quicksort.py < [filename]
 
 Julia - julia quicksort.jl < [filename]
+
+
+## Dicussion
+
+See the results of experiment in the Discussion Directory
